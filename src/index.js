@@ -5,6 +5,7 @@ const FilesystemService = require("./FilesystemService");
 const commandExists = require('command-exists');
 const Docxtemplater = require('docxtemplater');
 const JSZip = require('jszip');
+const converter = require('unoconv');
 
 if (!ArgumentResolver.hasAllRequiredArguments()) {
     console.log("Please ensure you pass the --file, --output and --data flags.");
@@ -45,9 +46,5 @@ catch (error) {
 FilesystemService.saveDocxFile(document.getZip().generate({ type: 'nodebuffer' }));
 
 if (ArgumentResolver.wantsPdf()) {
-    commandExists('unocov').then(command => {
-
-    }).catch(() => {
-        console.log('The unocov plugin must be installed to generate PDFs.');
-    });
+    FilesystemService.convertToPdf();
 }
