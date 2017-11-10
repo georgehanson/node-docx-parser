@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const ArgumentResolver = require("./ArgumentResolver");
 const FilesystemService = require("./FilesystemService");
 const commandExists = require('command-exists');
