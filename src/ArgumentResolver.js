@@ -19,6 +19,26 @@ class ArgumentResolver {
 
         return passed;
     }
+
+    getFile() {
+        return this.args.file;
+    }
+
+    dataIsValid() {
+        try {
+            return typeof this.getData() === 'object';
+        } catch (e) {
+            return false;
+        }
+    }
+
+    getData() {
+        return JSON.parse(this.args.data);
+    }
+
+    outputFileName() {
+        return this.args.output;
+    }
 }
 
 module.exports = new ArgumentResolver;
