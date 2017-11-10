@@ -1,6 +1,6 @@
 {
   "name": "node-docx-parser",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A node script which can fill DOCX placeholders and convert to PDFs",
   "main": "src/index.js",
   "repository": "git@github.com:GeorgeHanson/node-docx-parser.git",
