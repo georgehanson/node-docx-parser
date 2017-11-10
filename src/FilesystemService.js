@@ -21,7 +21,7 @@ class FilesystemService {
     }
 
     convertToPdf() {
-        converter.convert(path.resolve(process.cwd(), ArgumentResolver.outputFileName()), 'pdf', function (err, buffer) {
+        converter.convert(path.resolve(process.cwd(), ArgumentResolver.outputFileName()), 'pdf', {}, function (err, buffer) {
             this.savePdfFile(buffer);
             fs.writeFile('converted.pdf', result);
         });
