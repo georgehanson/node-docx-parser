@@ -39,6 +39,10 @@ class ArgumentResolver {
     outputFileName() {
         return this.args.output;
     }
+
+    wantsPdf() {
+        return this.args.hasOwnProperty('pdf');
+    }
 }
 
 module.exports = new ArgumentResolver;
