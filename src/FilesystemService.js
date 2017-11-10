@@ -1,7 +1,7 @@
 const ArgumentResolver = require("./ArgumentResolver");
 const fs = require('fs');
 const path = require('path');
-const converter = require('unoconv');
+const exec = require('child_process').exec;
 
 class FilesystemService {
     fileExists() {
@@ -21,15 +21,8 @@ class FilesystemService {
     }
 
     convertToPdf() {
-        converter.convert(path.resolve(process.cwd(), ArgumentResolver.outputFileName()), 'pdf', {}, function (err, buffer) {
-            this.savePdfFile(buffer);
-            fs.writeFile('converted.pdf', result);
-        });
-    }
-
-    savePdfFile(buffer) {
         let newFileName = ArgumentResolver.outputFileName().replace("docx", "pdf");
-        return this.saveFile(buffer, newFileName);
+        exec(`/usr/bin/unoconv -f pdf ${ArgumentResolver.outputFileName()} -o ${newFileName}`);
     }
 
     saveFile(buffer, name) {
