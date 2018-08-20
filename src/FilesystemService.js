@@ -21,8 +21,7 @@ class FilesystemService {
     }
 
     convertToPdf() {
-        let newFileName = ArgumentResolver.outputFileName().replace("docx", "pdf");
-        exec(`/usr/bin/unoconv -f pdf ${ArgumentResolver.outputFileName()} -o ${newFileName}`);
+        exec(`/usr/bin/unoconv -f pdf "${ArgumentResolver.outputFileName()}"`);
     }
 
     saveFile(buffer, name) {
