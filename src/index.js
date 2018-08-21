@@ -28,6 +28,8 @@ let document = DocxService.loadZip(content);
 document.setData(ArgumentResolver.getData());
 
 try {
+    console.log('Rendering docx');
+
     document.render()
 }
 catch (error) {
@@ -42,8 +44,12 @@ catch (error) {
     throw error;
 }
 
+console.log('Saving docx');
+
 FilesystemService.saveDocxFile(document.getZip().generate({ type: 'nodebuffer' }));
 
 if (ArgumentResolver.wantsPdf()) {
+    console.log('Converting to pdf');
+
     FilesystemService.convertToPdf();
 }
